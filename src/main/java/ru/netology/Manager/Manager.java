@@ -1,4 +1,9 @@
-package ru.netology;
+package ru.netology.Manager;
+
+import ru.netology.Product.Product;
+import ru.netology.Product.Smartphone;
+import ru.netology.Repository.Repository;
+import ru.netology.Product.Book;
 
 public class Manager {
     private Repository repository;
@@ -50,6 +55,10 @@ public class Manager {
 
     public Product[] getProducts(){
         return repository.getProducts();
+    }
+
+    public void removeId(int findedId){
+        repository.deleteById(findedId);
     }
 
 }

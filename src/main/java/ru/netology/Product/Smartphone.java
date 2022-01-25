@@ -1,6 +1,6 @@
-package ru.netology;
+package ru.netology.Product;
 
-public class Smartphone extends Product{
+public class Smartphone extends Product {
     private String manufacruter;
 
     public Smartphone(int id, String name, int price, String manufacruter) {

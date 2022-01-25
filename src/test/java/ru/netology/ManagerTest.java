@@ -1,6 +1,11 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.Manager.Manager;
+import ru.netology.Product.Product;
+import ru.netology.Product.Smartphone;
+import ru.netology.Repository.Repository;
+import ru.netology.Product.Book;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +31,7 @@ class ManagerTest {
 
     Repository repository = new Repository(products);
     Manager manager = new Manager(repository);
+
 
     @Test
     void searchByBookName() {
@@ -71,9 +77,27 @@ class ManagerTest {
     }
 
     @Test
+    void searchByProduct() {
+        Product[] expected = {
+                new Book(5, "Книга3", 3600, "Автор3"),
+                new Smartphone(6, "Смартфон3", 44000, "Производитель3"),
+        };
+        Product[] actual = manager.searchBy("3");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void saveProduct() {
         manager.saveProduct(new Book(16, "Тестовая книга", 987, "Тестовый автор"));
         int expected = 16;
+        int actual = manager.getProducts().length;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void removeId() {
+        int expected = manager.getProducts().length - 1;
+        manager.removeId(4);
         int actual = manager.getProducts().length;
         assertEquals(expected, actual);
     }

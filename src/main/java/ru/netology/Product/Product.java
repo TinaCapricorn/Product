@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.Product;
 
 public class Product {
     protected int id;
@@ -21,5 +21,9 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
     }
 }
