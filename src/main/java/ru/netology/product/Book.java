@@ -1,4 +1,4 @@
-package ru.netology.Product;
+package ru.netology.product;
 
 public class Book extends Product {
     private String author;

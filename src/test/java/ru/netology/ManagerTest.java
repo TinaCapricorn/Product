@@ -1,11 +1,11 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.Manager.Manager;
-import ru.netology.Product.Product;
-import ru.netology.Product.Smartphone;
-import ru.netology.Repository.Repository;
-import ru.netology.Product.Book;
+import ru.netology.manager.Manager;
+import ru.netology.product.Product;
+import ru.netology.product.Smartphone;
+import ru.netology.repository.Repository;
+import ru.netology.product.Book;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,6 +98,14 @@ class ManagerTest {
     void removeId() {
         int expected = manager.getProducts().length - 1;
         manager.removeId(4);
+        int actual = manager.getProducts().length;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void removeUnexistsId() {
+        int expected = manager.getProducts().length;
+        manager.removeId(34);
         int actual = manager.getProducts().length;
         assertEquals(expected, actual);
     }

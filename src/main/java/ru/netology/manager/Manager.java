@@ -1,9 +1,10 @@
-package ru.netology.Manager;
+package ru.netology.manager;
 
-import ru.netology.Product.Product;
-import ru.netology.Product.Smartphone;
-import ru.netology.Repository.Repository;
-import ru.netology.Product.Book;
+import ru.netology.product.Product;
+import ru.netology.product.Smartphone;
+import ru.netology.repository.Repository;
+import ru.netology.product.Book;
+import ru.netology.exception.NotFoundException;
 
 public class Manager {
     private Repository repository;
@@ -58,7 +59,12 @@ public class Manager {
     }
 
     public void removeId(int findedId){
-        repository.deleteById(findedId);
+        try {
+            repository.deleteById(findedId);
+        }
+        catch (NotFoundException exception){
+            System.out.println(exception.getMessage());
+        }
     }
 
 }
