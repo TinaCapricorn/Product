@@ -13,6 +13,10 @@ public class Manager {
         this.repository = repository;
     }
 
+    public Repository getRepository() {
+        return repository;
+    }
+
     public Product[] searchBy(String text) {
         Product[] searchedProduct = new Product[0];
         for (Product product: repository.getProducts()) {

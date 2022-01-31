@@ -1,6 +1,8 @@
 package ru.netology;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.netology.exception.NotFoundException;
 import ru.netology.manager.Manager;
 import ru.netology.product.Product;
 import ru.netology.product.Smartphone;
@@ -104,9 +106,7 @@ class ManagerTest {
 
     @Test
     void removeUnexistsId() {
-        int expected = manager.getProducts().length;
-        manager.removeId(34);
-        int actual = manager.getProducts().length;
-        assertEquals(expected, actual);
+        Repository repository = manager.getRepository();
+        Assertions.assertThrows(NotFoundException.class, ()->{repository.deleteById(34);});
     }
 }
